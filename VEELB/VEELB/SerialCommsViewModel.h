@@ -16,8 +16,6 @@ namespace VEELB
 		
 		void Listen(); 
 		void sendJob(string jobNum);
-
-		//Windows::Devices::Enumeration::DeviceInformationCollection^ ListAvailablePorts(void);
 		void ListAvailablePorts(void);
 		void CancelReadTask(void);
 		void CloseDevice(void);

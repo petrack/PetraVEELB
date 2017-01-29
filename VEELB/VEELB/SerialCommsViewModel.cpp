@@ -44,7 +44,9 @@ void SerialCommsViewModel::ListAvailablePorts(void)
 	//using asynchronous operation, get a list of serial devices available on this device
 	Concurrency::create_task(ListAvailableSerialDevicesAsync()).then([this](Windows::Devices::Enumeration::DeviceInformationCollection ^serialDeviceCollection)
 	{
-		for (auto &&device : serialDeviceCollection)
+		Windows::Devices::Enumeration::DeviceInformationCollection ^_deviceCollection = serialDeviceCollection;
+
+		for (auto &&device : _deviceCollection)
 		{
 			_availableDevices->Append(ref new Device(device->Id, device));
 		}

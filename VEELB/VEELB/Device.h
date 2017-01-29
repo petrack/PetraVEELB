@@ -1,13 +1,14 @@
 #pragma once
-#include <string>
-#include <string.h>
+
+using namespace Windows::Devices::Enumeration;
+using namespace std;
 
 namespace VEELB
 {
 	/// <summary>
 	/// A wrapper class for holding DeviceInformation while being bindable to XAML. 
 	/// </summary>
-	[Windows::UI::Xaml::Data::Bindable] // in c++, adding this attribute to ref classes enables data binding for more info search for 'Bindable' on the page http://go.microsoft.com/fwlink/?LinkId=254639 
+	//[Windows::UI::Xaml::Data::Bindable] // in c++, adding this attribute to ref classes enables data binding for more info search for 'Bindable' on the page http://go.microsoft.com/fwlink/?LinkId=254639 
 	public ref class Device sealed
 	{
 	public:
@@ -27,6 +28,7 @@ namespace VEELB
 				return _deviceInformation;
 			}
 		}
+
 
 	private:
 		Platform::String^ _id;
