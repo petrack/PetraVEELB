@@ -1,4 +1,6 @@
 #pragma once
+using namespace std;
+
 namespace VEELB
 {
 	public ref class JobViewModel sealed
@@ -6,10 +8,10 @@ namespace VEELB
 	public:
 		void Run(Windows::ApplicationModel::Background::IBackgroundTaskInstance^ taskInstance);
 		void Start(Windows::ApplicationModel::Background::IBackgroundTaskInstance^ taskInstance);
-		JobViewModel(int jobNumber);
+		JobViewModel(Platform::String^ jobNumber);
 		JobViewModel();
 	private:
-		int jobNumber;
+		Platform::String^ jobNumber;
 		double xPosition;
 		double yPosition;
 	};

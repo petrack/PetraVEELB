@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "SerialCommsViewModel.h"
 #include "Device.h"
+#include "MainPage.xaml.h"
+#include "JobViewModel.h"
 
 using namespace VEELB;
 using namespace Windows::ApplicationModel::Background;
@@ -18,34 +20,37 @@ using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 using namespace Concurrency;
+using namespace std;
+
+
+void SerialCommsViewModel::sendJob(string jobNum)
+{
+	ListAvailablePorts();
+
+	_availableDevices = ref new Platform::Collections::Vector<Platform::Object^>();
+
+	Device^ selectedDevice = static_cast<Device^>(_availableDevices->GetAt(0));
+	Windows::Devices::Enumeration::DeviceInformation ^entry = selectedDevice->DeviceInfo;
+
+	concurrency::create_task(ConnectToSerialDeviceAsync(entry, cancellationTokenSource->get_token()));
+}
 
 /// <summary>
 /// Finds all serial devices available on the device and populates a ListBox with the Ids of each device.
 /// </summary>
+//Windows::Devices::Enumeration::DeviceInformationCollection^ SerialCommsViewModel::ListAvailablePorts(void)
 void SerialCommsViewModel::ListAvailablePorts(void)
 {
-	cancellationTokenSource = new Concurrency::cancellation_token_source();
-
 	//using asynchronous operation, get a list of serial devices available on this device
 	Concurrency::create_task(ListAvailableSerialDevicesAsync()).then([this](Windows::Devices::Enumeration::DeviceInformationCollection ^serialDeviceCollection)
 	{
-		Windows::Devices::Enumeration::DeviceInformationCollection ^_deviceCollection = serialDeviceCollection;
-
-		// start with an empty list
-		_availableDevices->Clear();
-
-		for (auto &&device : _deviceCollection)
+		for (auto &&device : serialDeviceCollection)
 		{
-			if (IsTracer(device->Id))
-				_availableDevices->Append(ref new Device("Surface", device));
-			else
-				_availableDevices->Append(ref new Device("Unboard UART", device));
-
-			//	ConnectToSerialDeviceAsync(device, cancellationTokenSource->get_token());
+			_availableDevices->Append(ref new Device(device->Id, device));
 		}
-
 	});
 }
+
 /// <Summary>
 /// Determines if the device Id corresponds to the Tracer or another type of serial device since more
 /// devices may be connected to the Pi in the future for the company as they add features to their overall

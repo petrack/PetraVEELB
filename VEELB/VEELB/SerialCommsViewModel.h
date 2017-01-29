@@ -1,8 +1,7 @@
 #pragma once
-#include <string>
-#include <string.h>
 
 using namespace Platform;
+using namespace std;
 
 namespace VEELB
 {
@@ -15,7 +14,10 @@ namespace VEELB
      	Windows::Storage::Streams::DataReader^ _dataReaderObject;
     	Concurrency::cancellation_token_source* cancellationTokenSource;
 		
-		void Listen();
+		void Listen(); 
+		void sendJob(string jobNum);
+
+		//Windows::Devices::Enumeration::DeviceInformationCollection^ ListAvailablePorts(void);
 		void ListAvailablePorts(void);
 		void CancelReadTask(void);
 		void CloseDevice(void);

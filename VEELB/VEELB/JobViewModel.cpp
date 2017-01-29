@@ -7,15 +7,16 @@ using namespace Windows::ApplicationModel::Background;
 using namespace Windows::Foundation;
 using namespace Windows::Storage;
 using namespace Windows::System::Threading;
+using namespace std;
 
 void JobViewModel::Run(IBackgroundTaskInstance^ taskInstance)
 {
 
 }
 
-JobViewModel::JobViewModel(int jobNumber1)
+JobViewModel::JobViewModel(Platform::String^ jobNumberIn)
 {
-	jobNumber = jobNumber1;
+	jobNumber = jobNumberIn;
 }
 
 JobViewModel::JobViewModel()
