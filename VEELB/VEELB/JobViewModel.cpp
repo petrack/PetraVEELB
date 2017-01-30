@@ -9,6 +9,8 @@ using namespace Windows::Storage;
 using namespace Windows::System::Threading;
 using namespace std;
 
+SerialCommsViewModel^ _serialViewModel;
+
 void JobViewModel::Run(IBackgroundTaskInstance^ taskInstance)
 {
 
@@ -17,6 +19,8 @@ void JobViewModel::Run(IBackgroundTaskInstance^ taskInstance)
 JobViewModel::JobViewModel(Platform::String^ jobNumberIn)
 {
 	jobNumber = jobNumberIn;
+	_serialViewModel = ref new SerialCommsViewModel();
+	_serialViewModel->sendJob(jobNumber);
 }
 
 JobViewModel::JobViewModel()

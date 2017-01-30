@@ -308,7 +308,7 @@ void VEELB::MainPage::zeroBtn_Click(Platform::Object^ sender, Windows::UI::Xaml:
 void VEELB::MainPage::backspaceBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	Platform::String^ number = jobIdNumTxtBlock->Text;
-	if (number == "")
+	if (number->Length() > 0)
 	{
 		string jobIdStdString = convertPlatformStringToStandardString(number);
 		//jobIdStdString = jobIdStdString.substr(0, jobIdStdString.length - 1);

@@ -8,9 +8,8 @@ using namespace VEELB;
 using namespace Windows::ApplicationModel::Background;
 using namespace Windows::Foundation;
 using namespace Windows::Storage;
-using namespace Windows::System::Threading;
+//using namespace Windows::System::Threading;
 
-using namespace Platform;
 using namespace Windows::Foundation::Collections;
 using namespace Windows::UI::Xaml;
 using namespace Windows::UI::Xaml::Controls;
@@ -19,34 +18,36 @@ using namespace Windows::UI::Xaml::Data;
 using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
-using namespace Concurrency;
+//using namespace Concurrency;
 using namespace std;
 
 
-void SerialCommsViewModel::sendJob(string jobNum)
+void SerialCommsViewModel::sendJob(Platform::String^ jobNum)
 {
-	ListAvailablePorts();
-
 	_availableDevices = ref new Platform::Collections::Vector<Platform::Object^>();
-
+	ListAvailablePorts();
+	
 	Device^ selectedDevice = static_cast<Device^>(_availableDevices->GetAt(0));
 	Windows::Devices::Enumeration::DeviceInformation ^entry = selectedDevice->DeviceInfo;
 
 	concurrency::create_task(ConnectToSerialDeviceAsync(entry, cancellationTokenSource->get_token()));
+	WriteAsync(cancellationTokenSource->get_token(), jobNum);
 }
 
 /// <summary>
-/// Finds all serial devices available on the device and populates a ListBox with the Ids of each device.
+/// Finds all serial devices available on the device and populates a list with the Ids of each device.
 /// </summary>
-//Windows::Devices::Enumeration::DeviceInformationCollection^ SerialCommsViewModel::ListAvailablePorts(void)
 void SerialCommsViewModel::ListAvailablePorts(void)
 {
-	//using asynchronous operation, get a list of serial devices available on this device
+	// Using asynchronous operation, get a list of serial devices available on this device
 	Concurrency::create_task(ListAvailableSerialDevicesAsync()).then([this](Windows::Devices::Enumeration::DeviceInformationCollection ^serialDeviceCollection)
 	{
 		Windows::Devices::Enumeration::DeviceInformationCollection ^_deviceCollection = serialDeviceCollection;
+		
+		// start with an empty list
+		_availableDevices->Clear();
 
-		for (auto &&device : _deviceCollection)
+		for (auto &&device : serialDeviceCollection)
 		{
 			_availableDevices->Append(ref new Device(device->Id, device));
 		}
@@ -123,10 +124,9 @@ Concurrency::task<void> SerialCommsViewModel::ConnectToSerialDeviceAsync(Windows
 /// <summary>
 /// Returns a task that sends the outgoing data from the sendText textbox to the output stream. 
 /// </summary
-Concurrency::task<void> SerialCommsViewModel::WriteAsync(Concurrency::cancellation_token cancellationToken)
+Concurrency::task<void> SerialCommsViewModel::WriteAsync(Concurrency::cancellation_token cancellationToken, Platform::String^ messageToSend)
 {
-	Platform::String^ messageToSend = "Petra";//*0x88 in dec*/ CreateChecksum("jhk");
-	_dataWriterObject->WriteString(messageToSend);// sendText->Text);
+	_dataWriterObject->WriteString(messageToSend);
 
 	return concurrency::create_task(_dataWriterObject->StoreAsync(), cancellationToken).then([this](unsigned int bytesWritten)
 	{
