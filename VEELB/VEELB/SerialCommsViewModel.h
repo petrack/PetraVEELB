@@ -1,6 +1,5 @@
 #pragma once
 
-using namespace Platform;
 using namespace std;
 
 namespace VEELB
@@ -27,16 +26,8 @@ namespace VEELB
 	 public:
 		static Windows::Foundation::IAsyncOperation<Windows::Devices::Enumeration::DeviceInformationCollection ^> ^ListAvailableSerialDevicesAsync(void);
 		void sendJob(Platform::String^ jobNum);
-		// For XAML binding purposes, use the IObservableVector interface containing Object^ objects. 
-		// This wraps the real implementation of _availableDevices which is implemented as a Vector.
-		// See "Data Binding Overview (XAML)" https://msdn.microsoft.com/en-us/library/windows/apps/xaml/hh758320.aspx
-		property Windows::Foundation::Collections::IObservableVector<Platform::Object^>^ AvailableDevices
-		{
-			Windows::Foundation::Collections::IObservableVector<Platform::Object^>^ get()
-			{
-				return _availableDevices;
-			}
-		}			
+		void ConnectToTracer();
+		
 	};
 
 }

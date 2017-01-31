@@ -7,6 +7,7 @@
 
 #include "MainPage.g.h"
 #include "JobViewModel.h"
+#include "SerialCommsViewModel.h"
 #include <opencv2\core\core.hpp>
 using namespace VEELB;
 using namespace Platform;
@@ -42,11 +43,13 @@ namespace VEELB
 		Platform::String^ jobNumString;
 		int jobNumInt;
 		WriteableBitmap^ ImageSource = ref new WriteableBitmap(4, 5);
+		SerialCommsViewModel^ _serialViewModel;
+		Windows::Devices::SerialCommunication::SerialDevice ^_serialPort;
 	private:
 		// Event handlers
 		void Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void initBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
-		void enterJobNumberBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		Concurrency::task<void> enterJobNumberBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void oneBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void twoBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void threeBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);

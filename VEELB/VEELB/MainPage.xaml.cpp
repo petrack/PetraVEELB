@@ -6,6 +6,8 @@
 
 #include "pch.h"
 #include "MainPage.xaml.h"
+#include "SerialCommsViewModel.h"
+#include "Device.h"
 #include <opencv2\imgproc\types_c.h>
 #include <opencv2\imgcodecs\imgcodecs.hpp>
 #include <opencv2\core\core.hpp>
@@ -69,6 +71,8 @@ JobViewModel^ job;
 MainPage::MainPage()
 {
 	InitializeComponent();
+	_serialViewModel = ref new SerialCommsViewModel;
+	_serialViewModel->ConnectToTracer();
 }
 
 // Webcam functions
@@ -231,11 +235,14 @@ void VEELB::MainPage::initBtn_Click(Platform::Object^ sender, Windows::UI::Xaml:
 }
 
 // TODO: finish
-void VEELB::MainPage::enterJobNumberBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+Concurrency::task<void> VEELB::MainPage::enterJobNumberBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	MainGrid->Visibility = Windows::UI::Xaml::Visibility::Collapsed;
 	JobNumberGrid->Visibility = Windows::UI::Xaml::Visibility::Visible;
+
+	_serialViewModel->sendJob(jobIdNumTxtBlock->Text);
 }
+
 
 void VEELB::MainPage::oneBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
@@ -348,7 +355,7 @@ void VEELB::MainPage::clearBtn_Click(Platform::Object^ sender, Windows::UI::Xaml
 void VEELB::MainPage::enterBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	//string jobNum = convertPlatformStringToStandardString(jobIdNumTxtBlock->Text);
-	job = ref new JobViewModel(jobIdNumTxtBlock->Text);
+	job = ref new JobViewModel(jobIdNumTxtBlock->Text, _serialViewModel);
 }
 
 

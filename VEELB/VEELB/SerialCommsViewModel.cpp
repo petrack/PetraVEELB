@@ -4,34 +4,44 @@
 #include "MainPage.xaml.h"
 #include "JobViewModel.h"
 
-using namespace VEELB;
+using namespace VEELB;/*
 using namespace Windows::ApplicationModel::Background;
 using namespace Windows::Foundation;
 using namespace Windows::Storage;
-//using namespace Windows::System::Threading;
+using namespace Windows::System::Threading;
 
-using namespace Windows::Foundation::Collections;
+using namespace Windows::Foundation::Collections;*/
 using namespace Windows::UI::Xaml;
-using namespace Windows::UI::Xaml::Controls;
-using namespace Windows::UI::Xaml::Controls::Primitives;
-using namespace Windows::UI::Xaml::Data;
-using namespace Windows::UI::Xaml::Input;
-using namespace Windows::UI::Xaml::Media;
-using namespace Windows::UI::Xaml::Navigation;
+//using namespace Windows::UI::Xaml::Controls;
+//using namespace Windows::UI::Xaml::Controls::Primitives;
+//using namespace Windows::UI::Xaml::Data;
+//using namespace Windows::UI::Xaml::Input;
+//using namespace Windows::UI::Xaml::Media;
+//using namespace Windows::UI::Xaml::Navigation;
 //using namespace Concurrency;
-using namespace std;
+//using namespace std;
 
-
-void SerialCommsViewModel::sendJob(Platform::String^ jobNum)
+void SerialCommsViewModel::ConnectToTracer()
 {
 	_availableDevices = ref new Platform::Collections::Vector<Platform::Object^>();
 	ListAvailablePorts();
-	
+}
+
+void SerialCommsViewModel::sendJob(Platform::String^ jobNum)
+{
 	Device^ selectedDevice = static_cast<Device^>(_availableDevices->GetAt(0));
 	Windows::Devices::Enumeration::DeviceInformation ^entry = selectedDevice->DeviceInfo;
 
 	concurrency::create_task(ConnectToSerialDeviceAsync(entry, cancellationTokenSource->get_token()));
-	WriteAsync(cancellationTokenSource->get_token(), jobNum);
+	//_availableDevices = ref new Platform::Collections::Vector<Platform::Object^>();
+	//ListAvailablePorts(); // This method makes it break
+
+	//Device^ selectedDevice = static_cast<Device^>(_availableDevices->GetAt(0));
+	//Windows::Devices::Enumeration::DeviceInformation ^entry = selectedDevice->DeviceInfo;
+
+	//concurrency::create_task(ConnectToSerialDeviceAsync(entry, cancellationTokenSource->get_token()));
+
+	//WriteAsync(cancellationTokenSource->get_token(), jobNum);
 }
 
 /// <summary>
@@ -39,9 +49,12 @@ void SerialCommsViewModel::sendJob(Platform::String^ jobNum)
 /// </summary>
 void SerialCommsViewModel::ListAvailablePorts(void)
 {
+	cancellationTokenSource = new Concurrency::cancellation_token_source();
+
 	// Using asynchronous operation, get a list of serial devices available on this device
 	Concurrency::create_task(ListAvailableSerialDevicesAsync()).then([this](Windows::Devices::Enumeration::DeviceInformationCollection ^serialDeviceCollection)
 	{
+		/**** The program execution does not enter this code and I can't figure out why. Copy and pasted the SerialSample code which worked perfectly*/
 		Windows::Devices::Enumeration::DeviceInformationCollection ^_deviceCollection = serialDeviceCollection;
 		
 		// start with an empty list

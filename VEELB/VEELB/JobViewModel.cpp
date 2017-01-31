@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "JobViewModel.h"
 #include "SerialCommsViewModel.h"
+#include "MainPage.xaml.h"
 
 using namespace VEELB;
 using namespace Windows::ApplicationModel::Background;
@@ -9,18 +10,16 @@ using namespace Windows::Storage;
 using namespace Windows::System::Threading;
 using namespace std;
 
-SerialCommsViewModel^ _serialViewModel;
 
 void JobViewModel::Run(IBackgroundTaskInstance^ taskInstance)
 {
 
 }
 
-JobViewModel::JobViewModel(Platform::String^ jobNumberIn)
+JobViewModel::JobViewModel(Platform::String^ jobNumberIn, SerialCommsViewModel^ serialViewModel)
 {
 	jobNumber = jobNumberIn;
-	_serialViewModel = ref new SerialCommsViewModel();
-	_serialViewModel->sendJob(jobNumber);
+	serialViewModel->sendJob(jobNumber);
 }
 
 JobViewModel::JobViewModel()
