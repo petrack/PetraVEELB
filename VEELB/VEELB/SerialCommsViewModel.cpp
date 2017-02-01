@@ -32,7 +32,7 @@ void SerialCommsViewModel::sendJob(Platform::String^ jobNum)
 	Device^ selectedDevice = static_cast<Device^>(_availableDevices->GetAt(0));
 	Windows::Devices::Enumeration::DeviceInformation ^entry = selectedDevice->DeviceInfo;
 
-	concurrency::create_task(ConnectToSerialDeviceAsync(entry, cancellationTokenSource->get_token()));
+//	concurrency::create_task(ConnectToSerialDeviceAsync(entry, cancellationTokenSource->get_token()));
 	//_availableDevices = ref new Platform::Collections::Vector<Platform::Object^>();
 	//ListAvailablePorts(); // This method makes it break
 
@@ -67,6 +67,11 @@ void SerialCommsViewModel::ListAvailablePorts(void)
 	});
 }
 
+Windows::Foundation::Collections::IVector<Platform::Object^>^ SerialCommsViewModel::getAvailableDevices()
+{
+	return _availableDevices;
+}
+
 /// <Summary>
 /// Determines if the device Id corresponds to the Tracer or another type of serial device since more
 /// devices may be connected to the Pi in the future for the company as they add features to their overall
@@ -90,49 +95,49 @@ Windows::Foundation::IAsyncOperation<Windows::Devices::Enumeration::DeviceInform
 	// Identify all paired devices satisfying query
 	return Windows::Devices::Enumeration::DeviceInformation::FindAllAsync(serialDevices_aqs);
 }
-
-/// <summary>
-/// Creates a task chain that attempts connect to a serial device asynchronously. 
-/// </summary
-Concurrency::task<void> SerialCommsViewModel::ConnectToSerialDeviceAsync(Windows::Devices::Enumeration::DeviceInformation ^device, Concurrency::cancellation_token cancellationToken)
-{
-	return Concurrency::create_task(Windows::Devices::SerialCommunication::SerialDevice::FromIdAsync(device->Id), cancellationToken)
-		.then([this](Windows::Devices::SerialCommunication::SerialDevice ^serial_device)
-	{
-		try
-		{
-			_serialPort = serial_device;
-
-			Windows::Foundation::TimeSpan _timeOut;
-			_timeOut.Duration = 10000000L;
-
-			// Configure serial settings
-			_serialPort->WriteTimeout = _timeOut;
-			_serialPort->ReadTimeout = _timeOut;
-			_serialPort->BaudRate = 19200;
-			_serialPort->Parity = Windows::Devices::SerialCommunication::SerialParity::None;
-			_serialPort->StopBits = Windows::Devices::SerialCommunication::SerialStopBitCount::One;
-			_serialPort->DataBits = 8;
-			_serialPort->Handshake = Windows::Devices::SerialCommunication::SerialHandshake::None;
-
-			// setup our data reader for handling incoming data
-			_dataReaderObject = ref new Windows::Storage::Streams::DataReader(_serialPort->InputStream);
-			_dataReaderObject->InputStreamOptions = Windows::Storage::Streams::InputStreamOptions::Partial;
-
-			// setup our data writer for handling outgoing data
-			_dataWriterObject = ref new Windows::Storage::Streams::DataWriter(_serialPort->OutputStream);
-
-			// Setting this text will trigger the event handler that runs asynchronously for reading data from the input stream
-			
-			Listen();
-		}
-		catch (Platform::Exception ^ex)
-		{
-			// perform any cleanup needed
-			CloseDevice();
-		}
-	});
-}
+//
+///// <summary>
+///// Creates a task chain that attempts connect to a serial device asynchronously. 
+///// </summary
+//Concurrency::task<void> SerialCommsViewModel::ConnectToSerialDeviceAsync(Windows::Devices::Enumeration::DeviceInformation ^device, Concurrency::cancellation_token cancellationToken)
+//{
+//	return Concurrency::create_task(Windows::Devices::SerialCommunication::SerialDevice::FromIdAsync(device->Id), cancellationToken)
+//		.then([this](Windows::Devices::SerialCommunication::SerialDevice ^serial_device)
+//	{
+//		try
+//		{
+//			_serialPort = serial_device;
+//
+//			Windows::Foundation::TimeSpan _timeOut;
+//			_timeOut.Duration = 10000000L;
+//
+//			// Configure serial settings
+//			_serialPort->WriteTimeout = _timeOut;
+//			_serialPort->ReadTimeout = _timeOut;
+//			_serialPort->BaudRate = 19200;
+//			_serialPort->Parity = Windows::Devices::SerialCommunication::SerialParity::None;
+//			_serialPort->StopBits = Windows::Devices::SerialCommunication::SerialStopBitCount::One;
+//			_serialPort->DataBits = 8;
+//			_serialPort->Handshake = Windows::Devices::SerialCommunication::SerialHandshake::None;
+//
+//			// setup our data reader for handling incoming data
+//			_dataReaderObject = ref new Windows::Storage::Streams::DataReader(_serialPort->InputStream);
+//			_dataReaderObject->InputStreamOptions = Windows::Storage::Streams::InputStreamOptions::Partial;
+//
+//			// setup our data writer for handling outgoing data
+//			_dataWriterObject = ref new Windows::Storage::Streams::DataWriter(_serialPort->OutputStream);
+//
+//			// Setting this text will trigger the event handler that runs asynchronously for reading data from the input stream
+//			
+//			Listen();
+//		}
+//		catch (Platform::Exception ^ex)
+//		{
+//			// perform any cleanup needed
+//			CloseDevice();
+//		}
+//	});
+//}
 
 /// <summary>
 /// Returns a task that sends the outgoing data from the sendText textbox to the output stream. 

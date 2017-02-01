@@ -75,6 +75,7 @@ MainPage::MainPage()
 	_serialViewModel->ConnectToTracer();
 }
 
+
 // Webcam functions
 void cvVideoTask()
 {
@@ -235,12 +236,74 @@ void VEELB::MainPage::initBtn_Click(Platform::Object^ sender, Windows::UI::Xaml:
 }
 
 // TODO: finish
-Concurrency::task<void> VEELB::MainPage::enterJobNumberBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+void VEELB::MainPage::enterJobNumberBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	MainGrid->Visibility = Windows::UI::Xaml::Visibility::Collapsed;
 	JobNumberGrid->Visibility = Windows::UI::Xaml::Visibility::Visible;
 
-	_serialViewModel->sendJob(jobIdNumTxtBlock->Text);
+//	_serialViewModel->sendJob(jobIdNumTxtBlock->Text);
+
+	Windows::Foundation::Collections::IVector<Platform::Object^>^ availableDevices = _serialViewModel->getAvailableDevices();
+	Platform::Object^ temp = availableDevices->GetAt(0);
+
+	Device^ selectedDevice = static_cast<Device^>(availableDevices->GetAt(0));
+	Windows::Devices::Enumeration::DeviceInformation ^entry = selectedDevice->DeviceInfo;
+	Concurrency::cancellation_token_source* cancellationTokenSource = new Concurrency::cancellation_token_source();
+	
+
+	concurrency::create_task(ConnectToSerialDeviceAsync(entry, cancellationTokenSource->get_token()));
+			
+}
+
+/// <summary>
+/// Creates a task chain that attempts connect to a serial device asynchronously. 
+/// </summary
+Concurrency::task<void> MainPage::ConnectToSerialDeviceAsync(Windows::Devices::Enumeration::DeviceInformation ^device, Concurrency::cancellation_token cancellationToken)
+{
+	return Concurrency::create_task(Windows::Devices::SerialCommunication::SerialDevice::FromIdAsync(device->Id), cancellationToken)
+		.then([this](Windows::Devices::SerialCommunication::SerialDevice ^serial_device)
+	{
+		try
+		{
+			_serialPort = serial_device;
+
+			Windows::Foundation::TimeSpan _timeOut;
+			_timeOut.Duration = 10000000L;
+
+			// Configure serial settings
+			_serialPort->WriteTimeout = _timeOut;
+			_serialPort->ReadTimeout = _timeOut;
+			_serialPort->BaudRate = 19200;
+			_serialPort->Parity = Windows::Devices::SerialCommunication::SerialParity::None;
+			_serialPort->StopBits = Windows::Devices::SerialCommunication::SerialStopBitCount::One;
+			_serialPort->DataBits = 8;
+			_serialPort->Handshake = Windows::Devices::SerialCommunication::SerialHandshake::None;
+
+			// setup our data reader for handling incoming data
+			
+		}
+		catch (Platform::Exception ^ex)
+		{
+			// perform any cleanup needed
+			CloseDevice();
+		}
+	});
+}
+
+
+/// <summary>
+/// Closes the comport currently connected
+/// </summary
+void MainPage::CloseDevice(void)
+{
+	/*delete(_dataReaderObject);
+	_dataReaderObject = nullptr;
+
+	delete(_dataWriterObject);
+	_dataWriterObject = nullptr;
+*/
+	delete(_serialPort);
+	_serialPort = nullptr;
 }
 
 
