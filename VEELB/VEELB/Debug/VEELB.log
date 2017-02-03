@@ -1,0 +1,7 @@
+﻿  pch.cpp
+  App.xaml.cpp
+  MainPage.xaml.cpp
+  XamlTypeInfo.Impl.g.cpp
+c:\users\petra\documents\visual studio 2015\projects\realveelb\veelb\veelb\mainpage.xaml.cpp(197): warning C4101: 'image': unreferenced local variable
+c:\users\petra\documents\visual studio 2015\projects\realveelb\veelb\veelb\mainpage.xaml.cpp(274): warning C4447: 'main' signature found without threading model. Consider using 'int main(Platform::Array<Platform::String^>^ args)'.
+opencv_core300.lib(opencv_core300.dll) : fatal error LNK1112: module machine type 'ARM' conflicts with target machine type 'X86'

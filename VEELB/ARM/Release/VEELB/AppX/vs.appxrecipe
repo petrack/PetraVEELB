@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>DESKTOP-7HV61R4</Machine>
+    <WindowsUser>Petra</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>Release|ARM</SolutionConfiguration>
+    <PackageArchitecture>arm</PackageArchitecture>
+    <PackageIdentityName>cc7760aa-603b-48c0-8218-201738b23d1b</PackageIdentityName>
+    <PackageIdentityPublisher>CN=Petra</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\VEELB\ARM\Release\</IntermediateOutputPath>
+    <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
+    <PackageRegistrationPath>
+    </PackageRegistrationPath>
+    <RemoveNonLayoutFiles>false</RemoveNonLayoutFiles>
+    <RegisteredManifestChecksum>4275EBD6DAD6593A5B5453EC6DA25BDB2E60443FDDCF1066DC91DF9C9CD4F006</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>cc7760aa-603b-48c0-8218-201738b23d1b_1.0.0.0_arm__5dkyw8pt95mq4</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>cc7760aa-603b-48c0-8218-201738b23d1b_5dkyw8pt95mq4!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>cc7760aa-603b-48c0-8218-201738b23d1b</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=Petra</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>False</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2017-02-03T20:57:27.265</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\Assets\back.png">
+      <PackagePath>Assets\back.png</PackagePath>
+      <Modified>2017-01-25T02:28:08.817</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\Assets\close.png">
+      <PackagePath>Assets\close.png</PackagePath>
+      <Modified>2017-01-25T02:28:08.819</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\Assets\glasses.png">
+      <PackagePath>Assets\glasses.png</PackagePath>
+      <Modified>2017-01-25T02:28:08.821</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\Assets\LockScreenLogo.scale-200.png">
+      <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
+      <Modified>2016-11-21T01:10:20.262</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\Assets\return.png">
+      <PackagePath>Assets\return.png</PackagePath>
+      <Modified>2017-01-25T02:28:08.824</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\Assets\settings.png">
+      <PackagePath>Assets\settings.png</PackagePath>
+      <Modified>2017-01-25T02:28:08.826</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\Assets\SplashScreen.scale-200.png">
+      <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-11-21T01:10:20.263</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\Assets\Square150x150Logo.scale-200.png">
+      <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-11-21T01:10:20.264</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\Assets\Square44x44Logo.scale-200.png">
+      <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-11-21T01:10:20.265</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-11-21T01:10:20.266</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-11-21T01:10:20.267</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\Assets\Wide310x150Logo.scale-200.png">
+      <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-11-21T01:10:20.268</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\opencv_core300.dll">
+      <PackagePath>opencv_core300.dll</PackagePath>
+      <Modified>2016-11-04T00:01:07.659</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\opencv_imgcodecs300.dll">
+      <PackagePath>opencv_imgcodecs300.dll</PackagePath>
+      <Modified>2016-11-04T00:01:55.189</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\opencv_imgproc300.dll">
+      <PackagePath>opencv_imgproc300.dll</PackagePath>
+      <Modified>2016-11-04T00:01:40.666</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\opencv_ml300.dll">
+      <PackagePath>opencv_ml300.dll</PackagePath>
+      <Modified>2016-11-04T00:01:27.602</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\opencv_objdetect300.dll">
+      <PackagePath>opencv_objdetect300.dll</PackagePath>
+      <Modified>2016-11-04T00:02:02.680</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\opencv_video300.dll">
+      <PackagePath>opencv_video300.dll</PackagePath>
+      <Modified>2016-11-04T00:02:12.650</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\opencv_videoio300.dll">
+      <PackagePath>opencv_videoio300.dll</PackagePath>
+      <Modified>2016-11-04T00:02:51.090</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2017-02-03T21:38:14.457</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\VEELB.exe">
+      <PackagePath>VEELB.exe</PackagePath>
+      <Modified>2017-02-03T21:38:14.026</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\VEELB.pdb">
+      <PackagePath>VEELB.pdb</PackagePath>
+      <Modified>2017-02-03T21:38:14.207</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Petra\Documents\Visual Studio 2015\Projects\MyGitVEELB\VEELB\ARM\Release\VEELB\ilc\VEELB.winmd">
+      <PackagePath>VEELB.winmd</PackagePath>
+      <Modified>2017-02-03T20:32:04.660</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.24123.0</Version>
+      <Architecture>ARM</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.24123.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\ARM\Microsoft.VCLibs.ARM.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.24123.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.24123.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\x64\Microsoft.VCLibs.x64.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.24123.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.24123.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\x86\Microsoft.VCLibs.x86.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>
