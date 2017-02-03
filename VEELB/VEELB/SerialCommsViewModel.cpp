@@ -4,22 +4,9 @@
 #include "MainPage.xaml.h"
 #include "JobViewModel.h"
 
-using namespace VEELB;/*
-using namespace Windows::ApplicationModel::Background;
-using namespace Windows::Foundation;
-using namespace Windows::Storage;
-using namespace Windows::System::Threading;
-
-using namespace Windows::Foundation::Collections;*/
+using namespace VEELB;
 using namespace Windows::UI::Xaml;
-//using namespace Windows::UI::Xaml::Controls;
-//using namespace Windows::UI::Xaml::Controls::Primitives;
-//using namespace Windows::UI::Xaml::Data;
-//using namespace Windows::UI::Xaml::Input;
-//using namespace Windows::UI::Xaml::Media;
-//using namespace Windows::UI::Xaml::Navigation;
-//using namespace Concurrency;
-//using namespace std;
+using namespace std;
 
 void SerialCommsViewModel::ConnectToTracer()
 {

@@ -13,14 +13,6 @@ namespace VEELB
 	{
 	public:
 		Device(Platform::String^ id, Windows::Devices::Enumeration::DeviceInformation^ deviceInfo);
-
-		property Platform::String^ Id
-		{
-			Platform::String^ get()
-			{
-				return _id;
-			}
-		}
 		property Windows::Devices::Enumeration::DeviceInformation^ DeviceInfo
 		{
 			Windows::Devices::Enumeration::DeviceInformation^ get()
@@ -28,7 +20,6 @@ namespace VEELB
 				return _deviceInformation;
 			}
 		}
-
 
 	private:
 		Platform::String^ _id;

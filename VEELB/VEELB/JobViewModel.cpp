@@ -34,3 +34,17 @@ void JobViewModel::Start(IBackgroundTaskInstance^ taskInstance)
 	auto activity = ref new JobViewModel();
 	activity->Run(taskInstance);
 }
+
+Platform::String^ JobViewModel::getJobNumber()
+{
+	return jobNumber;
+}
+int JobViewModel::getXPosition()
+{
+	return xPosition;
+}
+
+int JobViewModel::getYPosition()
+{
+	return yPosition;
+}
